@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="utf-8">
+      <link rel="stylesheet" type="text/css" href="index.css">
+      <title></title>
+   </head>
+   <body oncontextmenu="return false;">
+     <ul id="contextMenu" class="contextMenu" style="top:0;left:0;display: none;"></ul>
+
+     <div class="menu" id="menu" name="menu" style="right: 0px;">
+       <!-- <div class="three">
+         <i class="fas fa-bars" onclick="toggleMenu()"></i>
+       </div> -->
+
+       <table class="menu">
+         <tr>
+           <td colspan="2">
+             <table class="options">
+               <tr>
+                 <td>
+                   <input class="checkBox" type="checkbox" name="fieldLines" id="fieldLines" oninput="createDataFromMenu();" >
+                 </td>
+                 <td>
+                  <label for="fieldLines">Field Lines</label>
+                 </td>
+               </tr>
+
+
+               <tr>
+                 <td>
+                   <input class="checkBox" type="checkbox" name="fieldVectors" id="fieldVectors" oninput="createDataFromMenu();">
+                 </td>
+                 <td>
+                  <label for="fieldVectors">Field Vectors</label>
+                 </td>
+               </tr>
+
+
+               <tr>
+                 <td>
+                   <input class="checkBox" type="checkbox" name="equi" id="equi" oninput="createDataFromMenu();">
+                 </td>
+                 <td>
+                  <label for="equi">Equipotential Lines</label>
+                 </td>
+               </tr>
+
+
+
+               <tr>
+                 <td>
+                   <input class="checkBox" type="checkbox" name="voltage" id="voltage" oninput="createDataFromMenu();" >
+                 </td>
+                 <td>
+                  <label for="voltage">Voltage</label>
+                 </td>
+               </tr>
+
+
+
+
+
+
+
+
+               <tr>
+                 <td>
+                   <input class="checkBox" type="checkbox" name="createGrid" id="createGrid" oninput="createDataFromMenu();" checked>
+                 </td>
+                 <td>
+                  <label for="createGrid">Show Grid</label>
+                 </td>
+               </tr>
+
+
+
+               <tr>
+                 <td>
+
+                 </td>
+                 <td>
+                  <input class="checkBox" type="checkbox" name="snapChargesToGrid" id="snapChargesToGrid" oninput="createDataFromMenu();" >
+                  <label for="snapChargesToGrid">Snap to Grid</label>
+                 </td>
+               </tr>
+             </table>
+           </td>
+         </tr>
+
+
+
+         <tr>
+           <td>
+             <br>
+             <br>
+
+           </td>
+         </tr>
+
+
+
+
+         <tr>
+           <td class="button">
+             <button type="button" class="preset" onclick="createPreset('single');">Single</button>
+           </td>
+           <td class="button">
+             <button type="button" class="preset" onclick="createPreset('dipole');">Dipole</button>
+           </td>
+         </tr>
+         <tr>
+           <td class="button">
+             <button type="button" class="preset" onclick="createPreset('square');">Square</button>
+           </td>
+           <td class="button">
+             <button type="button" class="preset" onclick="createPreset('shield');">Shield</button>
+           </td>
+         </tr>
+         <tr>
+           <td class="button">
+             <button type="button" class="preset" onclick="createPreset('row');">Row</button>
+           </td>
+           <td class="button">
+             <button type="button" class="preset" onclick="createPreset('dipole row');">Dipole Row</button>
+           </td>
+         </tr>
+         <tr>
+           <td colspan="2"  class="doubleButton">
+             <button type="button" class="preset" onclick="createPreset();testCharges=[];">Clear Screen</button>
+           </td>
+         </tr>
+
+
+
+
+
+         <tr>
+           <td>
+             <br>
+             <br>
+           </td>
+         </tr>
+
+
+
+
+
+         <tr>
+           <td colspan="2">
+             <input class="checkBox" type="checkbox" name="testCharge" id="testCharge" oninput="getDataFromMenu();testCharges = [];">
+            <label for="testCharge">Test Charge Mode</label>
+           </td>
+         </tr>
+
+         <tr>
+           <td class="button" colspan="2">
+             <button type="button" class="preset" onclick="select('#testCharge').checked(true);getDataFromMenu();createTestChargeMap();">Create Test Charge Map</button>
+           </td>
+         </tr>
+         <tr>
+           <td class="button" colspan="2">
+             <button type="button" class="preset" onclick="testCharges = [];">Clear Test Charges</button>
+           </td>
+         </tr>
+
+
+
+         <tr>
+           <td>
+             <br>
+             <br>
+           </td>
+         </tr>
+
+
+
+
+
+         <tr>
+           <td colspan="2">
+             <input class="checkBox" type="checkbox" name="walls" id="walls" oninput="getDataFromMenu();walls = [];">
+            <label for="walls">Wall Mode</label>
+           </td>
+         </tr>
+
+         <tr>
+           <td class="button" colspan="2">
+             <button type="button" class="preset" onclick="walls = [];">Clear Walls</button>
+           </td>
+         </tr>
+
+       </table>
+
+
+
+
+
+
+
+     </div>
+     <div class="bottomButtons">
+       <i onclick="" class="fas fa-question"></i>
+       <i onclick="loop();looping = true;" class="fas fa-play"></i>
+       <i onclick="noLoop();looping = false;" class="fas fa-pause"></i>
+       <i onclick="saveAsPNG();" class="fas fa-download"></i>
+       <i onclick="location.reload();" class="fas fa-redo-alt"></i>
+     </div>
+
+   </body>
+   <script src="script.js"></script>
+   <script src="charge.js"></script>
+   <script src="testCharge.js"></script>
+   <script src="contextMenu.js"></script>
+   <script src="equipotentialLines.js"></script>
+   <script src="voltage.js"></script>
+   <script src="fieldLines.js"></script>
+   <script src="fieldVectors.js"></script>
+   <script src="wall.js"></script>
+   <script src="p5.min.js"></script>
+   <script src="p5.collide2d.min.js"></script>
+   <script src="paper-full.min.js"></script>
+   <script src="https://kit.fontawesome.com/5ab7058819.js" crossorigin="anonymous"></script>
+</html>
